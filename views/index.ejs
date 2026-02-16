@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body class="bg-zinc-900">
+    <div class="main min-h-screen text-zinc-200 w-full m-3">
+      <form class="flex justify-center" action="/create" method="post">
+        <div class="form flex flex-col justify-center">
+          <input
+            class="p-2 w-150 bg-zinc-700 border rounded outline-none m-3"
+            type="text"
+            name="title"
+            placeholder="Enter anything...."
+          />
+          <textarea
+            class="border w-150 rounded outline-none m-3 p-2 bg-zinc-700 tracking-none resize-none"
+            name="details"
+            placeholder="write your task detail..."
+          ></textarea>
+
+          <input
+            class="bg-orange-400 p-2 m-3 mx-auto rounded w-30"
+            type="submit"
+            value="create task"
+          />
+        </div>
+      </form>
+
+      <div class="tasks flex gap-2 flex-wrap">
+        <!-- it wil display the box depending upon the number of files user have created -->
+        <% if (files.length > 0){ %> <% files.forEach((val)=>{ %>
+        <div class="task border rounded bg-zinc-600 w-70 p-2">
+          <div class="flex justify-between">
+            <h1><%= val.replace(".txt","") %></h1>
+            <form action="/delete/<%=val%>" method="post"
+              onsubmit="return confirm('confirm delete?')">
+              <button type="submit" class="text-red-300">delete</button>
+            </form>
+           
+          </div>
+          
+          
+          <div class="text-blue-400 flex justify-between mt-3">
+            <a class="hover:underline" href="/files/<%=val%>">Read more..</a>
+            <a class="hover:underline" href="/edit/<%=val%>">Edit filename</a>
+          </div>
+        </div>
+        <% }) %> <% }else{ %>
+        <h2 class="text-center mx-auto text-2xl text-center  rounded p-2 mt-10">
+          No tasks yet!
+        </h2>
+        <% } %>
+      </div>
+    </div>
+  </body>
+</html>

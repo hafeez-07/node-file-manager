@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body class="text-white bg-gray-800">
+    <a class="text-blue-600 hover:underline p-4 mt-4" href="/">Go to home</a>
+    <form class="flex justify-center" action="/edit" method="post">
+      <div class="form flex flex-col justify-center">
+        <input
+          class="p-2 w-100 bg-zinc-700 border rounded outline-none m-3"
+          type="text"
+          name="previousName"
+          placeholder="Previous name"
+          value="<%=filename%>"
+          readonly
+        />
+        <input
+          class="p-2 w-100 bg-zinc-700 border rounded outline-none m-3"
+          type="text"
+          name="newName"
+          placeholder="New name"
+        />
+        <input
+          class="bg-blue-500 p-2 m-3 mx-auto rounded w-30"
+          type="submit"
+          value="Rename task"
+        />
+      </div>
+    </form>
+  </body>
+</html>
